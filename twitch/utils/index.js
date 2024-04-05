@@ -1,8 +1,6 @@
 import puppeteer from "puppeteer";
 import * as cheerio from "cheerio";
 
-// TODO: Add subscribers via TWITCH API - cannot scrape this data unfortunately.
-
 // --------------------------------------------
 // ADD TWITCH USER NAME TO PULL FROM
 // --------------------------------------------
@@ -76,9 +74,7 @@ async function getPageData(userName) {
 // --------------------------------------------
 // SCRAPE DATA FROM: https://twitchtracker.com/
 // --------------------------------------------
-
-// TODO: Rank #, Rank Percentile, Followers, Subscribers, Avg viewers.
-// TODO: Add subscribers via TWITCH API - cannot scrape this data unfortunately
+// TODO: Add subscribers via TWITCH API - cannot scrape this data from any site unfortunately
 
 async function scrapeData(pageData) {
   const $ = cheerio.load(pageData);
@@ -96,7 +92,7 @@ async function scrapeData(pageData) {
   scrapedData.avgViewers = $(
     "ul.list-group > li:eq(3) > div:last > div:last > span:last"
   ).text();
-  //Subscribers, call different function requiring authentication from Twitch and Twitch App integration.
+  // TODO: Subscribers, call different function requiring authentication from Twitch and Twitch App integration.
   return scrapedData;
 }
 
