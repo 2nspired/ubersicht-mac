@@ -1,8 +1,5 @@
-import { load } from "cheerio";
-import { stat } from "fs";
 import puppeteer from "puppeteer";
 import * as cheerio from "cheerio";
-import { select, filter, is, some } from "cheerio-select";
 
 // TODO: Add subscribers via TWITCH API - cannot scrape this data unfortunately.
 
@@ -108,17 +105,11 @@ async function scrapeData(pageData) {
 // --------------------------------------------
 
 export default async function getData() {
-  let lastUpdate;
-  // console.log("Last Updated:", lastUpdate);
   const retreivedData = await getPageData(username);
-  // console.log("retreivedData:", retreivedData);
   const scrapedData = await scrapeData(retreivedData);
   console.log("scrapedData:", scrapedData);
 
   //
-
-  // lastUpdate = Date().toString;
-  // console.log("Updated:", lastUpdate);
 }
 
 getData(username);
